@@ -194,19 +194,20 @@ class ReactSummernote extends Component {
   }
 
   render() {
-    const { tag: Tag, children, className } = this.props;
+    const { value, defaultValue, className } = this.props;
+    const html = value || defaultValue;
 
     return (
       <div className={className}>
-        <Tag id={this.uid}>{children}</Tag>
+        <div id={this.uid} dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     );
   }
 }
 
 ReactSummernote.propTypes = {
-  tag: PropTypes.string, // will determing using div or textarea field for form components like redux-form
-  children: PropTypes.node, // instead of value, using children makes more sense for div and textarea blocks
+  value: PropTypes.string,
+  defaultValue: PropTypes.string,
   codeview: PropTypes.bool,
   className: PropTypes.string,
   options: PropTypes.object,
@@ -223,7 +224,4 @@ ReactSummernote.propTypes = {
   onBlurCodeView: PropTypes.func
 };
 
-ReactSummernote.defaultProps = {
-  tag: 'div'
-};
 export default ReactSummernote;
