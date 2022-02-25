@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
   "env": {
     "browser": true
   },
@@ -9,11 +9,15 @@
     "arrow-parens": ["error", "as-needed"],
     "consistent-return": [2, { "treatUndefinedAsUnspecified": true }],
     "class-methods-use-this:": 0,
-    "max-len": [2, 200, 2, {
-      "ignoreUrls": true,
-      "ignoreComments": false
-    }],
-
+    "max-len": [
+      2,
+      200,
+      2,
+      {
+        "ignoreUrls": true,
+        "ignoreComments": false
+      }
+    ],
     "react/require-default-props": 0,
     "react/forbid-prop-types": [2, { "forbid": ["any"] }]
   }

@@ -1,9 +1,9 @@
 /* global $ */
 
+import React, { Component } from 'react';
 import 'summernote/dist/summernote';
 import 'summernote/dist/summernote.css';
 import 'codemirror/lib/codemirror.css';
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const randomUid = () => Math.floor(Math.random() * 100000);
@@ -44,8 +44,9 @@ class ReactSummernote extends Component {
   }
 
   componentDidMount() {
-    const options = this.props.options || {};
-    const codeview = this.props.codeview;
+    let { options } = this.props;
+    options = options || {};
+    const { codeview } = this.props;
     // const codeviewCommand = codeview ? 'codeview.activate' : 'codeview.deactivate';
     options.callbacks = this.callbacks;
 
@@ -59,15 +60,22 @@ class ReactSummernote extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { props } = this;
 
-    const codeview = nextProps.codeview;
-    const codeviewCommand = codeview ? 'codeview.activate' : 'codeview.deactivate';
+    const { codeview } = nextProps;
+    const codeviewCommand = codeview
+      ? 'codeview.activate'
+      : 'codeview.deactivate';
 
-
-    if (typeof nextProps.value === 'string' && props.value !== nextProps.value) {
+    if (
+      typeof nextProps.value === 'string' &&
+      props.value !== nextProps.value
+    ) {
       this.replace(nextProps.value);
     }
 
-    if (typeof nextProps.disabled === 'boolean' && props.disabled !== nextProps.disabled) {
+    if (
+      typeof nextProps.disabled === 'boolean' &&
+      props.disabled !== nextProps.disabled
+    ) {
       this.toggleState(nextProps.disabled);
     }
     if (codeview !== props.codeview) {
@@ -107,7 +115,7 @@ class ReactSummernote extends Component {
         enable: this.enable,
         insertImage: this.insertImage,
         insertNode: this.insertNode,
-        insertText: this.insertText
+        insertText: this.insertText,
       });
     }
   }
@@ -120,12 +128,21 @@ class ReactSummernote extends Component {
     }
   }
 
-  focus() {
-    this.editor.summernote('focus');
-  }
+  get callbacks() {
+    const { props } = this;
 
-  isEmpty() {
-    return this.editor.summernote('isEmpty');
+    return {
+      onInit: this.onInit,
+      onEnter: props.onEnter,
+      onFocus: props.onFocus,
+      onBlur: props.onBlur,
+      onKeyup: props.onKeyUp,
+      onKeydown: props.onKeyDown,
+      onPaste: props.onPaste,
+      onChange: props.onChange,
+      onImageUpload: this.onImageUpload,
+      onBlurCodeview: props.onBlurCodeview,
+    };
   }
 
   reset() {
@@ -176,21 +193,12 @@ class ReactSummernote extends Component {
     this.editor.summernote('insertText', text);
   }
 
-  get callbacks() {
-    const props = this.props;
+  focus() {
+    this.editor.summernote('focus');
+  }
 
-    return {
-      onInit: this.onInit,
-      onEnter: props.onEnter,
-      onFocus: props.onFocus,
-      onBlur: props.onBlur,
-      onKeyup: props.onKeyUp,
-      onKeydown: props.onKeyDown,
-      onPaste: props.onPaste,
-      onChange: props.onChange,
-      onImageUpload: this.onImageUpload,
-      onBlurCodeview: props.onBlurCodeview
-    };
+  isEmpty() {
+    return this.editor.summernote('isEmpty');
   }
 
   render() {
@@ -199,6 +207,7 @@ class ReactSummernote extends Component {
 
     return (
       <div className={className}>
+        {/* eslint-disable-next-line react/no-danger */}
         <div id={this.uid} dangerouslySetInnerHTML={{ __html: html }} />
       </div>
     );
@@ -221,7 +230,7 @@ ReactSummernote.propTypes = {
   onPaste: PropTypes.func,
   onChange: PropTypes.func,
   onImageUpload: PropTypes.func,
-  onBlurCodeview: PropTypes.func
+  onBlurCodeview: PropTypes.func,
 };
 
 export default ReactSummernote;
