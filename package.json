@@ -32,7 +32,7 @@
   "dependencies": {
     "codemirror": "^5.65.2",
     "prop-types": "^15.8.1",
-    "summernote": "github:zhuhanming/summernote#develop"
+    "summernote": "github:zhuhanming/summernote#v1.0"
   },
   "peerDependencies": {
     "bootstrap": "^5.1.3",

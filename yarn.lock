@@ -3410,9 +3410,9 @@ strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
 
-"summernote@github:zhuhanming/summernote#develop":
+"summernote@github:zhuhanming/summernote#v1.0":
   version "0.8.19"
-  resolved "https://codeload.github.com/zhuhanming/summernote/tar.gz/dc6fd2754707197201949117e5ba34599f30af7d"
+  resolved "https://codeload.github.com/zhuhanming/summernote/tar.gz/e4462a849150447eab037680e7910a3b9a88993e"
 
 supports-color@^2.0.0:
   version "2.0.0"
