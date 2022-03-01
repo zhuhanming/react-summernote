@@ -5,7 +5,7 @@
   "main": "./dist/react-summernote.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vnkitaev/react-summernote.git"
+    "url": "https://github.com/zhuhanming/react-summernote.git"
   },
   "scripts": {
     "build": "webpack",
@@ -32,7 +32,7 @@
   "dependencies": {
     "codemirror": "^5.65.2",
     "prop-types": "^15.8.1",
-    "summernote": "^0.8.20"
+    "summernote": "github:zhuhanming/summernote#develop"
   },
   "peerDependencies": {
     "bootstrap": "^5.1.3",
